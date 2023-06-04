@@ -1,0 +1,151 @@
+#test {
+    margin-top: 100px;
+}
+
+#test p {
+    color: green;
+    text-decoration: underline;
+    text-transform: uppercase;
+}
+/* Задание 3 */
+
+#test h2 {
+    text-align: center;
+    color: red;
+}
+/* Задание 4 */
+
+.bbb {
+    background-color: aqua;
+}
+/* Здание 5 */
+
+#test .bbb {
+    padding: 30px;
+}
+/* Задание 6 */
+
+p.bbb {
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+}
+/* Задание 7 */
+
+h2.bbb {
+    font-size: small;
+}
+/* Задание 8 */
+
+#test p.bbb {
+    font-weight: 800;
+}
+/* Задание 9 */
+
+div h2, div p {
+    width: max-content;
+}
+/* Задание 10 */
+
+.bbb, .xxx {
+    text-align: right;
+}
+/* Задание 11 */
+
+p.bbb, h2.xxx {
+    font-style: italic; 
+}
+/* Задание 12 */
+
+#test p.bbb, #test p.xxx {
+    font-size: 25px;
+}
+/* Задание 13 */
+
+.fff * {
+    border: 1px solid red;
+}
+/* Задание 14 */
+
+.fff p{
+    height: 40px;
+}
+/* Задание 15 */
+
+p.fff {
+    background-color: yellow;
+}
+/* Задание 16 */
+
+.fff .bbb {
+    padding-right: 20px;
+}
+/* Задание 17 */
+
+.fff h2.bbb {
+    color: red; 
+    text-decoration: underline;
+}
+/* Задание 18 */
+
+#test a:link, #test a:visited { text-decoration: none; color: red; }
+#test a:hover { text-decoration: underline; color: blue; }
+/* Задание 19 */
+
+a.www:link, a.www:visited { text-decoration: underline; color: blue; }
+a.www:hover { text-decoration: none; }
+/* Задание 20 */
+
+#test a.www:link, #test a.www:visited { text-decoration: underline; color: green; }
+#test a.www:hover { text-decoration: none; color:cyan; }
+/* Задание 21 */
+
+.eee .www a { text-decoration: underline; color: orange; }
+.eee .www a:hover { text-decoration: none; color:blueviolet; }
+/* Задание 22 */
+
+p > i {
+    color: crimson;
+}
+/* Задание 23 */
+
+ul > li {
+    list-style-type: square;
+}
+/* Задание 24 */
+
+p > a, a.test {
+    text-decoration: none;
+    color: #FF9800;
+}
+/* Задание 25 */
+
+b + i {
+    font-weight: bold;
+    color: #4CAF50;
+}
+/* Задание 26 */
+
+#test b + i {
+    text-decoration: underline;
+    font-weight: bold;
+}
+/* Задание 27 */
+
+ul + p {
+    margin-top: 20px;
+}
+/* Задание 28 */
+
+h1 ~ p {
+    color: #FF5722;
+}
+/* Задание 29 */
+
+#test h2 ~ p {
+    background-color: #ECEFF1;
+}
+/* Задание 30 */
+
+p * i {
+    font-size: 1.2em;
+}
+/* Задание 31 */
