@@ -1,0 +1,70 @@
+body {
+    text-align: center;
+}
+
+.flag-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    margin-top: 50px;
+}
+
+.stripe {
+    height: 300px;
+    width: 200px;
+    float: left;
+}
+        
+.blue-stripe {
+    background-color: blue;
+}
+        
+.white-stripe {
+    background-color: white;
+}
+
+.red-stripe {
+    background-color: red;
+}
+        
+.country-name {
+    margin-top: 10px;
+}
+
+.stripe2left {
+    background-color: white;
+    height: 300px;
+    width: 170px;
+}
+
+.stripe2right {
+    background-color: red;
+    height: 300px;
+    width: 430px;
+}
+
+.triangles {
+    display:inherit;
+    flex-direction: column;
+    position: relative;
+    left: 20px;
+}
+
+.triangle {
+    border-radius: 10px;
+    padding: 30px;
+    position: relative;
+    color: #fff;
+}
+
+.triangle::after {
+    content: ''; 
+    
+    position: absolute; /* Абсолютное позиционирование */
+    left: 40px; bottom: 0px; /* Положение треугольника */
+    border: 30px solid transparent; 
+    border-left: 80px solid rgb(255, 255, 255);
+    /*border: 10px solid transparent; /* Прозрачные границы */
+    /*border-top: 10px solid green; /* Добавляем треугольник */
+}
