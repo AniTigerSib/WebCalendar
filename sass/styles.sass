@@ -1,0 +1,158 @@
+@import url('../css/font.css')
+@keyframes animate
+    0%
+        transform: rotate(0deg)
+    100%
+        transform: rotate(360deg)
+@keyframes animate2
+    0%
+        transform: rotate(360deg)
+    100%
+        transform: rotate(0deg)
+
+
+$jet: #353535ff
+$header-background-color: #d2d7dfff
+$primary-text-color: #000
+$error-text-color: #ff2020
+$button-color: #8a897cff
+$sub-color: #ffffffff
+$font-primary: Georgia, sans-serif
+$font-placeholder-color: #bdbbb0ff
+
+*
+    margin: 0
+    padding: 0
+    font-family: $font-primary
+
+.container_main
+    margin: 0
+    display: flex
+    flex-direction: column
+
+.header
+    background-color: $header-background-color
+    color: $primary-text-color
+    box-shadow: 0px -2px 15px 0px rgba(0, 0, 0, 0.3)
+    display: flex
+    align-items: center
+    justify-content: space-between
+    padding: 10px 20px
+    &__logo img
+        width: 150px
+        height: auto
+    &__button
+        background-color: $button-color
+        color: $primary-text-color
+        box-shadow: 5px 5px 15px 0px rgba(0, 0, 0, 0.4)
+        text-decoration: none
+        border: none
+        padding: 10px 16px
+        font-size: 14px
+        font-weight: bold
+        border-radius: 4px
+        margin-left: 10px
+    &__authenticated, &__unauthenticated
+        display: flex
+        align-items: center
+    &__authenticated
+        padding-left: 20px 
+        justify-self: flex-start
+        justify-content: space-between
+    &__user
+        margin-left: 10px
+        color: $primary-text-color
+        font-weight: bold
+    // &__unauthenticated &__button
+    //     background-color: transparent
+    //     color: $header-unauthenticated-color
+
+.login
+    box-sizing: border-box
+    &__body
+        display: flex
+        justify-content: center
+        align-items: center
+        min-height: 100vh
+        background: $jet
+        .width-greater
+            width: 80vh
+            height: 80vh
+    &__square
+        position: relative
+        display: flex
+        width: 80vw
+        height: 80vw
+        justify-content: center
+        align-items: center
+    &__square i
+        position: absolute
+        inset: 0
+        border: 2px solid #fff
+        transition: 0.5s
+    &__square i:nth-child(1)
+        border-radius: 38% 62% 63% 37% / 41% 44% 56% 59%
+        animation: animate 6s linear infinite
+    &__square i:nth-child(2)
+        border-radius: 41% 44% 56% 59%/38% 62% 63% 37%
+        animation: animate 4s linear infinite
+    &__square i:nth-child(3)
+        border-radius: 41% 44% 56% 59%/38% 62% 63% 37%
+        animation: animate2 10s linear infinite
+    &__square:hover i
+        border: 6px solid var(--clr)
+        filter: drop-shadow(0 0 20px var(--clr))
+    &__main
+        position: absolute
+        width: 40vw
+        max-width: 560px
+        height: 100%
+        display: flex
+        justify-content: center
+        align-items: center
+        flex-direction: column
+        gap: 20px
+        #login_error
+            color: $error-text-color
+        &__inputBx
+            position: relative
+            width: 100%
+            .disabled_button
+                filter: grayscale(50%)
+                cursor: auto
+            .enabled_button
+                filter: none
+                cursor: pointer
+        &__inputBx input
+            position: relative
+            width: calc(100% - 40px)
+            padding: 12px 20px
+            background: transparent
+            border: 2px solid #fff
+            border-radius: 40px
+            font-size: 1.2em
+            color: #fff
+            box-shadow: none
+            outline: none
+        &__inputBx input[type="submit"]
+            width: 100%
+            background: $button-color
+            background: linear-gradient(47deg,#ff357a,#fff172)
+            border: none
+        &__inputBx input::placeholder
+            color: $font-placeholder-color
+        h2
+            font-size: 2em
+            color: #fff
+        &__links
+            position: relative
+            width: 100%
+            display: flex
+            align-items: center
+            justify-content: space-between
+            padding: 0 20px
+            a
+                color: #fff
+                text-decoration: none
+.register_links
+    justify-content: right
