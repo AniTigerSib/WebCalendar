@@ -16,32 +16,45 @@ require("dbconnect.php");
 <body>
     <div class="container_main">
         <div class="header">
-            <a href="index.php" class="header__logo">
-                <img src="media/logo.png">
-            </a>
-            <?php
-            if (isset($_SESSION['username'])) {
-                echo ('<div class="header__authenticated">
-                    <a href="#" class="header__button">Группы</a>
-                    <a href="#" class="header__button">Расписание</a>
-                <div class="header__user">');
-                echo ($_SESSION['username']);
-                echo ('</div></div>');
-            } else {
-                echo ('<div class="header__unauthenticated">
+            <div class="header__left">
+                <a href="index.php" class="header__logo">
+                    <img src="media/logo.png">
+                </a>
+                <?php
+                    if (isset($_SESSION['username'])) {
+                    echo ('<div class="header__authenticated">
+                    <a href="#" class="header__button header__button__left">Группы</a>
+                    <a href="#" class="header__button">Расписание</a>');
+                    echo ('</div>');
+                }?>
+            </div>
+            <div class="header__right">
+                <?php
+                if (isset($_SESSION['username'])) {
+                    echo ('<button id="usermenu-btn" class="header__user">');
+                    echo ($_SESSION['username']);
+                    echo ('</button> <nav id="dropdown-menu">
+                        <ul>
+                        <li><a href="#">Профиль</a></li>
+                        <li><a href="auth.php?logout=1">Выйти из аккаунта</a></li>
+                        </ul>
+                        </nav>');
+                }
+                else {
+                    echo ('<div class="header__unauthenticated">
                     <a href="index.php?page=login" class="header__button">Вход</a>
                     <a href="index.php?page=register" class="header__button">Регистрация</a>
-                </div>');
-            }
-            ?>
-
+                    </div>');
+                }
+                ?>
+            </div>
         </div>
         <div class="main_page_content">
             <?php
             //require ("message.php");
             switch ($_GET['page']) {
                 case 'login':
-                    echo('<div class="login__body">
+                    echo ('<div class="login__body">
                     <div class="login__square width-greater" id="login_border">
                     <i style="--clr:#00ff0a;"></i>
                     <i style="--clr:#ff0057;"></i>
@@ -60,6 +73,7 @@ require("dbconnect.php");
                     echo ('</div>
                     </div>');
                     break;
+                default:;
             }
             ?>
             <!-- <div class="left_panel">

@@ -20,23 +20,41 @@ function checkWidthGreaterThanHeight() {
 
 window.addEventListener('resize', checkWidthGreaterThanHeight);
 window.onload = function() {
-  validateForm();
-  $('#register_username_error').hide();
-  $('#register_email_error').hide();
-  $('#register_password_error').hide();
-  $('#register_password_accept_error').hide();
+  var currentPage = window.location.href;
+  if (currentPage === 'http://localhost/index.php?page=register') {
+    validateEmptyForm();
+    $('#register_username_error').hide();
+    $('#register_email_error').hide();
+    $('#register_password_error').hide();
+    $('#register_password_accept_error').hide();
+  }
 };
 
 $(document).ready(function() {
-        $('#regForm').on('submit', function(event) {
-        event.preventDefault(); // Предотвращаем отправку формы по умолчанию
+  $('#usermenu-btn').click(function(e) {
+    $('#dropdown-menu').slideToggle();
+  });
 
-        if (validateForm()) {
-          // Если форма прошла все проверки, можно выполнить отправку формы
-          this.submit();
-        }
+  $(document).click(function(e) {
+    if ($('#dropdown-menu').is(":visible") && !$(e.target).closest('#dropdown-menu').length) {
+      $('#dropdown-menu').slideUp();
+    }
+  });
+});
+
+$(document).ready(function() {
+      //   $('#regForm').on('submit', function(event) {
+      //   event.preventDefault(); // Предотвращаем отправку формы по умолчанию
+
+      //   if (validateForm()) {
+      //     // Если форма прошла все проверки, можно выполнить отправку формы
+      //     this.submit();
+      //   }
+      // });
+
+      $('#register_username_field, #register_email_field, #register_password_field, #register_password_accept').on('input', function () {
+        $('#register_error').hide();
       });
-
       $('#register_username_field').on('input', function() {
         $('#register_username_error').hide();
         validateEmptyForm();
@@ -60,7 +78,16 @@ $(document).ready(function() {
     });
 
     function validateForm() {
-      return (validateEmptyForm() && validateUsername() && validateEmail() && validatePassword() && validatePasswordAccept());
+      let valid1 = validateEmptyForm();
+      let valid2 = validateUsername();
+      let valid3 = validateEmail();
+      let valid4 = validatePassword();
+      let valid5 = validatePasswordAccept();
+      if (valid1 && valid2 && valid3 && valid4 && valid5){
+        return true;
+      } else {
+        return false;
+      }
     }
 
     function validateEmptyForm() {

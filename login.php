@@ -13,7 +13,7 @@
     <?php endif;
     $_SESSION['login_error'] = 0; ?>
     <div class="login__main__inputBx">
-        <input type="submit" value="Войти">
+        <input type="submit" class="enabled_button" value="Войти">
     </div>
     <div class="login__main__links">
         <a href="#">Забыли пароль?</a>

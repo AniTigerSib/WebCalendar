@@ -33,6 +33,7 @@ $font-placeholder-color: #bdbbb0ff
 .header
     background-color: $header-background-color
     color: $primary-text-color
+    position: relative
     box-shadow: 0px -2px 15px 0px rgba(0, 0, 0, 0.3)
     display: flex
     align-items: center
@@ -51,16 +52,23 @@ $font-placeholder-color: #bdbbb0ff
         font-size: 14px
         font-weight: bold
         border-radius: 4px
-        margin-left: 10px
+        margin-left: 15px
+        &__left
+            margin-left: 0
+    &__left, &__right
+        display: flex
+        align-items: center
     &__authenticated, &__unauthenticated
         display: flex
         align-items: center
     &__authenticated
-        padding-left: 20px 
-        justify-self: flex-start
+        padding-left: 15px 
         justify-content: space-between
     &__user
-        margin-left: 10px
+        // padding: 10px 20px
+        // border-radius: 20px
+        // cursor: pointer
+        //margin-left: 10px
         color: $primary-text-color
         font-weight: bold
     // &__unauthenticated &__button

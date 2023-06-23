@@ -5,6 +5,13 @@ $username = "root";  // Имя пользователя базы данных
 $password = "";  // Пароль пользователя базы данных
 $dbname = "main_webcalendar_backup";  // Имя базы данных, к которой вы хотите подключиться
 
+// Устанавливаем время истечения срока действия сессии в 30 минут
+$session_expire_time = 30; // минуты
+/* установить режим кеширования на 'private' */
+session_cache_limiter('private');
+// Устанавливаем срок истечения времени бездействия пользователя
+session_cache_expire($session_expire_time);
+
 ini_set('session.gc_maxlifetime', 1800); // Установка максимального времени жизни сессии в 30 минут (1800 секунд)
 session_start(["use_strict_mode" => true, "cookie_secure" => true]);
 

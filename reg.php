@@ -21,6 +21,7 @@ if (isset($_POST['login'])) {
 
     if ($result->num_rows > 0) {
         // Email уже существует
+        $_SESSION['register_error'] = 1;
         $_SESSION['message'] = 'Пользователь с таким email уже зарегистрирован';
         header("Location: index.php?page=register");
         die();
@@ -34,6 +35,7 @@ if (isset($_POST['login'])) {
 
     if ($result->num_rows > 0) {
         // Логин уже существует
+        $_SESSION['register_error'] = 1;
         $_SESSION['message'] = 'Пользователь с таким логином уже зарегистрирован';
         header("Location: index.php?page=register");
         die();
@@ -43,13 +45,16 @@ if (isset($_POST['login'])) {
     $insertQuery = $conn->prepare("INSERT INTO users (login, password, salt, email) VALUES (?, ?, ?, ?)");
     $insertQuery->bind_param("ssss", $login, $hashedPassword, $salt, $email);
     
-    if ($query->execute()) {
+    if ($insertQuery->execute()) {
         // Регистрация прошла успешно
-        $_SESSION['message'] = 'Вы успешно зарегистрировались!';
-        header("Location: index.php");
+        $_SESSION['login_error'] = 1;
+        $_SESSION['register_error'] = 0;
+        $_SESSION['message'] = 'Вы успешно зарегистрировались!<br>Войдите для продолжения.';
+        header("Location: index.php?page=login");
         die();
     } else {
         // Ошибка при выполнении запроса
+        $_SESSION['register_error'] = 1;
         $_SESSION['message'] = 'Ошибка при регистрации. Пожалуйста, попробуйте снова.';
         header("Location: index.php?page=register");
         die();

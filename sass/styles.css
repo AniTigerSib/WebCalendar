@@ -30,6 +30,7 @@
 .header {
   background-color: #d2d7df;
   color: #000;
+  position: relative;
   box-shadow: 0px -2px 15px 0px rgba(0, 0, 0, 0.3);
   display: flex;
   align-items: center;
@@ -50,19 +51,24 @@
   font-size: 14px;
   font-weight: bold;
   border-radius: 4px;
-  margin-left: 10px;
+  margin-left: 15px;
+}
+.header__button__left {
+  margin-left: 0;
+}
+.header__left, .header__right {
+  display: flex;
+  align-items: center;
 }
 .header__authenticated, .header__unauthenticated {
   display: flex;
   align-items: center;
 }
 .header__authenticated {
-  padding-left: 20px;
-  justify-self: flex-start;
+  padding-left: 15px;
   justify-content: space-between;
 }
 .header__user {
-  margin-left: 10px;
   color: #000;
   font-weight: bold;
 }
