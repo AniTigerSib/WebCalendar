@@ -23,8 +23,8 @@ require("dbconnect.php");
                 <?php
                     if (isset($_SESSION['username'])) {
                     echo ('<div class="header__authenticated">
-                    <a href="#" class="header__button header__button__left">Группы</a>
-                    <a href="#" class="header__button">Расписание</a>');
+                    <a href="#" class="header__button header__button__authenticated header__button__left">Группы</a>
+                    <a href="#" class="header__button header__button__authenticated">Расписание</a>');
                     echo ('</div>');
                 }?>
             </div>
@@ -59,7 +59,7 @@ require("dbconnect.php");
             switch ($_GET['page']) {
                 case 'login':
                     echo ('<div class="login__body">
-                    <div class="login__square width-greater" id="login_border">
+                    <div class="login__square" id="login_border">
                     <i style="--clr:#00ff0a;"></i>
                     <i style="--clr:#ff0057;"></i>
                     <i style="--clr:#fffd44;"></i>');
@@ -68,8 +68,8 @@ require("dbconnect.php");
                     </div>');
                     break;
                 case 'register':
-                    echo ('<div class="login__body">
-                    <div class="login__square width-greater" id="login_border">
+                    echo ('<div class="login__body" id="login_body">
+                    <div class="login__square" id="login_border">
                     <i style="--clr:#00ff0a;"></i>
                     <i style="--clr:#ff0057;"></i>
                     <i style="--clr:#fffd44;"></i>');

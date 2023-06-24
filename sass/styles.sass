@@ -10,7 +10,6 @@
     100%
         transform: rotate(0deg)
 
-
 $jet: #353535ff
 $header-background-color: #d2d7dfff
 $primary-text-color: #000
@@ -20,11 +19,15 @@ $sub-color: #ffffffff
 $font-primary: Georgia, sans-serif
 $font-placeholder-color: #bdbbb0ff
 $profile-porder-widht: 3px
+$font-size-normal: 19px
+$font-size-middle: 15px
+$font-size-mobile: 9px
 
 *
     margin: 0
     padding: 0
     font-family: $font-primary
+    font-size: $font-size-normal
 
 .container_main
     margin: 0
@@ -35,13 +38,14 @@ $profile-porder-widht: 3px
     background-color: $header-background-color
     color: $primary-text-color
     position: relative
+    min-width: 300px
     box-shadow: 0px -2px 15px 0px rgba(0, 0, 0, 0.3)
     display: flex
     align-items: center
     justify-content: space-between
     padding: 10px 20px
     &__logo img
-        width: 150px
+        width: 170px
         height: auto
     &__button
         background-color: $button-color
@@ -50,7 +54,7 @@ $profile-porder-widht: 3px
         text-decoration: none
         border: none
         padding: 10px 16px
-        font-size: 14px
+        font-size: 1em
         font-weight: bold
         border-radius: 4px
         margin-left: 15px
@@ -99,6 +103,7 @@ $profile-porder-widht: 3px
 
 .login
     box-sizing: border-box
+    height: 100%
     &__body
         display: flex
         justify-content: center
@@ -106,13 +111,13 @@ $profile-porder-widht: 3px
         min-height: 100vh
         background: $jet
         .width-greater
-            width: 80vh
-            height: 80vh
+            //width: 80vh
+            //height: 80vh
     &__square
         position: relative
         display: flex
-        width: 80vw
-        height: 80vw
+        width: 50vw
+        height: 50vw
         justify-content: center
         align-items: center
     &__square i
@@ -238,8 +243,6 @@ $profile-porder-widht: 3px
             &.not_empty + label
                 top:0
                 font-size:16px
-            
-    
     // label
     //   display: block
     //   margin-bottom: 5px
@@ -249,4 +252,37 @@ $profile-porder-widht: 3px
       margin-top: 20px
     
     small
-      color: #888
+        color: #888
+@media screen and (max-width: 1300px)
+    .login__square
+        width: 60vw
+        height: 60vw 
+@media screen and (max-width: 1000px)
+    *
+        font-size: $font-size-middle
+    .header
+        padding: 10px 15px
+        &__logo img
+            width: 130px
+    .login__square
+        width: 70vw
+        height: 70vw 
+@media screen and (max-width: 600px)
+    .login__square
+        width: 80vw
+        height: 80vw
+@media screen and (max-width: 550px)
+    *
+        font-size: $font-size-mobile
+    .login__main
+        gap: 10px
+    .header
+        padding: 7px 12px
+        min-width: calc( 300px - 2 * 12px )
+        &__button
+            padding: 8px 13px
+        &__logo img
+            width: 100px
+@media screen and (max-width: 400px)
+    .header__button__authenticated
+        display: none

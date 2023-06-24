@@ -1,4 +1,5 @@
 $(document).ready(function() {
+  size();
     //$('#login_error').hide();
     var currentPage = window.location.href;
     if (currentPage == 'http://localhost/index.php?page=register') {
@@ -6,6 +7,7 @@ $(document).ready(function() {
       $('#username_field, #password_field').on('input', function() {
         $('#login_error').hide();
     });
+    //checkWidthGreaterThanHeight();
     }
     if(currentPage == 'http://localhost/index.php?page=profile') {
       checkProfileInput();
@@ -22,6 +24,13 @@ $(document).ready(function() {
       // });
   }
 });
+
+function size() {
+  var sqrtValue = Math.sqrt(2);
+  var maxWidthValue = 50 * $(window).width() * sqrtValue / 100; // Процент от ширины окна
+
+  $('#login_body').css('max-width', maxWidthValue + 'px');
+}
 
 function checkProfileInput() {
   if ($('#lastname').val() === '') {
@@ -41,19 +50,25 @@ function checkProfileInput() {
   }
 }
 
-function checkWidthGreaterThanHeight() {
-  var width = window.innerWidth;
-  var height = window.innerHeight;
-  var currentPage = window.location.href;
+// function checkWidthGreaterThanHeight() {
+//   var width = $(window).width();
+//   var height = $(window).height();
+//   var currentPage = window.location.href;
 
-  if ((currentPage == 'http://localhost/index.php?page=register' || currentPage == 'http://localhost/index.php?page=login') && width > height) {
-    $("login_border").addClass("width-greater");
-  } else {
-    $("login_border").removeClass("width-greater");
-  }
-}
+//   if ((currentPage == 'http://localhost/index.php?page=register' || currentPage == 'http://localhost/index.php?page=login') && width > height) {
+//     $("#login_border").addClass("width-greater");
+//   } else {
+//     $("#login_border").removeClass("width-greater");
+//   }
+// }
+$(window).resize(function () { 
+  var sqrtValue = Math.sqrt(2);
+  var maxWidthValue = 50 * $(window).width() * sqrtValue / 100; // Процент от ширины окна
 
-window.addEventListener('resize', checkWidthGreaterThanHeight);
+  $('#login_body').css('max-width', maxWidthValue + 'px');
+});
+
+//$(window).resize(checkWidthGreaterThanHeight);
 window.onload = function() {
   var currentPage = window.location.href;
   if (currentPage === 'http://localhost/index.php?page=register') {
@@ -64,6 +79,16 @@ window.onload = function() {
     $('#register_password_accept_error').hide();
   }
 };
+
+$(document).ready(function() {
+  if ($(window).width() < 400) {
+    var listItem1 = '<li><a href="#">Группы</a></li>';
+    var listItem2 = '<li><a href="#">Расписание</a></li>';
+
+    $('#dropdown-menu ul').append(listItem1);
+    $('#dropdown-menu ul').append(listItem2);
+  }
+});
 
 $(document).ready(function() {
   $('#usermenu-btn').click(function(e) {
