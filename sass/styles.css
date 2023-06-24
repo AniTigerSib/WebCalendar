@@ -69,8 +69,37 @@
   justify-content: space-between;
 }
 .header__user {
+  padding: 10px 20px;
+  border-radius: 20px;
+  cursor: pointer;
   color: #000;
   font-weight: bold;
+}
+.header nav#dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: #fff;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+.header nav#dropdown-menu ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+.header nav#dropdown-menu ul li {
+  margin-bottom: 10px;
+}
+.header nav#dropdown-menu ul li a {
+  display: block;
+  color: #333;
+  text-decoration: none;
+}
+.header nav#dropdown-menu ul li a:hover {
+  text-decoration: underline;
 }
 
 .login {
@@ -128,8 +157,9 @@
   flex-direction: column;
   gap: 20px;
 }
-.login__main #login_error {
+.login__main #login_error, .login__main #register_error {
   color: #ff2020;
+  text-align: center;
 }
 .login__main__inputBx {
   position: relative;
@@ -186,4 +216,75 @@
 
 .register_links {
   justify-content: right;
+}
+
+.profile_page {
+  display: flex;
+  flex-direction: row;
+}
+.profile_page .left_panel {
+  width: 15%;
+  height: 100vh;
+  border-right: solid 1px #cbcbcb;
+}
+
+.profile {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  text-align: center;
+  display: grid;
+}
+.profile h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+.profile form {
+  text-align: left;
+  position: relative;
+}
+.profile form .input-group {
+  position: relative;
+  margin-top: 15px;
+}
+.profile form .input-group label {
+  padding: 0 10px;
+  background-color: #fff;
+  color: #000;
+  position: absolute;
+  top: 50%;
+  left: 15px;
+  transform: translateY(-50%);
+  text-transform: capitalize;
+  pointer-events: none;
+  font-size: 20px;
+  transition: all 0.3s;
+}
+.profile form .input-group input {
+  padding: 18px 15px;
+  width: 300px;
+  border: 3px solid #353535;
+  outline: none;
+  color: #000;
+  font-size: 20px;
+  font-family: inherit;
+  background-color: transparent;
+  border-radius: 5px;
+}
+.profile form .input-group input:focus + label {
+  top: 0;
+  font-size: 16px;
+}
+.profile form .input-group input.not_empty + label {
+  top: 0;
+  font-size: 16px;
+}
+.profile form input[type=file] {
+  margin-bottom: 10px;
+}
+.profile form button[type=submit] {
+  margin-top: 20px;
+}
+.profile form small {
+  color: #888;
 }/*# sourceMappingURL=styles.css.map */

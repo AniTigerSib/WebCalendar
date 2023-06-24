@@ -20,7 +20,7 @@ if (isset($_POST['login'])) {
 
         if ($hashedPassword == $row['password']) {
             // Авторизация успешна
-            $_SESSION['username'] = $_POST['login'];
+            $_SESSION['username'] = $row['login'];
             $_SESSION['user_id'] = $row['user_id'];
             $_SESSION['message'] = 'Вы успешно вошли в систему';
             header("Location: index.php");
@@ -29,7 +29,7 @@ if (isset($_POST['login'])) {
             // Неправильный пароль
             $_SESSION['login_error'] = 1;
             $_SESSION['message'] = 'Неверный пароль!';
-            header("Location: index.php?page=login");
+            header("Location: index.php");
             die();
         }
     } else {
@@ -44,7 +44,8 @@ if (isset($_POST['login'])) {
 if ($_GET['logout'] == 1) {
     unset($_SESSION['username']);
     unset($_SESSION['user_id']);
-    $_SESSION['message'] = 'Вы успешно вышли из системы';
+    unset($_SESSION['message']);
+    
     header("Location: index.php");
     die();
 }

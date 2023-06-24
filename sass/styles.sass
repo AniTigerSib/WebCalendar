@@ -19,6 +19,7 @@ $button-color: #8a897cff
 $sub-color: #ffffffff
 $font-primary: Georgia, sans-serif
 $font-placeholder-color: #bdbbb0ff
+$profile-porder-widht: 3px
 
 *
     margin: 0
@@ -65,12 +66,33 @@ $font-placeholder-color: #bdbbb0ff
         padding-left: 15px 
         justify-content: space-between
     &__user
-        // padding: 10px 20px
-        // border-radius: 20px
-        // cursor: pointer
+        padding: 10px 20px
+        border-radius: 20px
+        cursor: pointer 
         //margin-left: 10px
         color: $primary-text-color
         font-weight: bold
+    nav#dropdown-menu 
+        display: none
+        position: absolute
+        top: 100%
+        right: 0
+        background-color: #fff
+        padding: 10px
+        border-radius: 10px
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2)
+        ul
+            list-style-type: none
+            margin: 0
+            padding: 0
+            li
+                margin-bottom: 10px
+                a
+                    display: block
+                    color: #333
+                    text-decoration: none
+                    &:hover
+                        text-decoration: underline
     // &__unauthenticated &__button
     //     background-color: transparent
     //     color: $header-unauthenticated-color
@@ -120,8 +142,9 @@ $font-placeholder-color: #bdbbb0ff
         align-items: center
         flex-direction: column
         gap: 20px
-        #login_error
+        #login_error, #register_error
             color: $error-text-color
+            text-align: center
         &__inputBx
             position: relative
             width: 100%
@@ -164,3 +187,66 @@ $font-placeholder-color: #bdbbb0ff
                 text-decoration: none
 .register_links
     justify-content: right
+.profile_page
+    display: flex
+    flex-direction: row
+    .left_panel
+        width: 15%
+        height: 100vh
+        border-right: solid 1px #cbcbcb
+        //background: #222
+.profile
+  max-width: 400px
+  margin: 0 auto
+  padding: 20px
+  text-align: center
+  display: grid
+  h1
+    font-size: 24px
+    margin-bottom: 20px
+  form
+    text-align: left
+    position: relative
+    .input-group
+        position: relative
+        margin-top: 15px
+        label
+            padding:0 10px
+            background-color:#fff
+            color: #000
+            position: absolute
+            top: 50%
+            left: 15px
+            transform: translateY(-50%)
+            text-transform: capitalize
+            pointer-events: none
+            font-size:20px
+            transition: all 0.3s
+        input
+            padding:18px 15px
+            width:300px
+            border: 3px solid #353535ff
+            outline: none
+            color: #000
+            font-size: 20px
+            font-family: inherit
+            background-color: transparent
+            border-radius: 5px
+            &:focus + label
+                top:0
+                font-size:16px
+            &.not_empty + label
+                top:0
+                font-size:16px
+            
+    
+    // label
+    //   display: block
+    //   margin-bottom: 5px
+    input[type="file"]
+      margin-bottom: 10px
+    button[type="submit"]
+      margin-top: 20px
+    
+    small
+      color: #888

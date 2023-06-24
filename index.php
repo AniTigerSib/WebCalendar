@@ -30,12 +30,16 @@ require("dbconnect.php");
             </div>
             <div class="header__right">
                 <?php
-                if (isset($_SESSION['username'])) {
-                    echo ('<button id="usermenu-btn" class="header__user">');
+                if (isset($_SESSION['user_id'])) {
+                    echo ('<div id="usermenu-btn" class="header__user">');
+                    // $query = $conn->prepare("SELECT * FROM users WHERE login = ?");
+                    // $query->bind_param("s", $login);
+                    // $query->execute();
+                    // $result = $query->get_result();
                     echo ($_SESSION['username']);
-                    echo ('</button> <nav id="dropdown-menu">
+                    echo ('</div> <nav id="dropdown-menu">
                         <ul>
-                        <li><a href="#">Профиль</a></li>
+                        <li><a href="index.php?page=profile">Профиль</a></li>
                         <li><a href="auth.php?logout=1">Выйти из аккаунта</a></li>
                         </ul>
                         </nav>');
@@ -73,7 +77,9 @@ require("dbconnect.php");
                     echo ('</div>
                     </div>');
                     break;
-                default:;
+                case 'profile':
+                    require("profile.php");
+                    break;
             }
             ?>
             <!-- <div class="left_panel">

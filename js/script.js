@@ -1,20 +1,55 @@
 $(document).ready(function() {
     //$('#login_error').hide();
-
-    // При изменении значения любого из полей ввода
-    $('#username_field, #password_field').on('input', function() {
+    var currentPage = window.location.href;
+    if (currentPage == 'http://localhost/index.php?page=register') {
+      // При изменении значения любого из полей ввода
+      $('#username_field, #password_field').on('input', function() {
         $('#login_error').hide();
     });
+    }
+    if(currentPage == 'http://localhost/index.php?page=profile') {
+      checkProfileInput();
+      $('#lastname, #firstname, #email').on('input', function () {
+        checkProfileInput();
+      });
+      // $('#profileForm').on('submit', function(event) {
+      //    event.preventDefault(); // Предотвращаем отправку формы по умолчанию
+
+      //    if (validateNames('#lastname') && validateNames('#firstname') && validateProfileEmail()) {
+      //      // Если форма прошла все проверки, можно выполнить отправку формы
+      //      this.submit();
+      //    }
+      // });
+  }
 });
+
+function checkProfileInput() {
+  if ($('#lastname').val() === '') {
+    $('#lastname').removeClass('not_empty');
+  } else {
+    $('#lastname').addClass('not_empty');
+  }
+  if ($('#firstname').val() === '') {
+    $('#firstname').removeClass('not_empty');
+  } else {
+    $('#firstname').addClass('not_empty');
+  }
+  if ($('#email').val() === '') {
+    $('#email').removeClass('not_empty');
+  } else {
+    $('#email').addClass('not_empty');
+  }
+}
 
 function checkWidthGreaterThanHeight() {
   var width = window.innerWidth;
   var height = window.innerHeight;
-  
-  if (width > height) {
-    document.getElementById("login_border").classList.add("width-greater");
+  var currentPage = window.location.href;
+
+  if ((currentPage == 'http://localhost/index.php?page=register' || currentPage == 'http://localhost/index.php?page=login') && width > height) {
+    $("login_border").addClass("width-greater");
   } else {
-    document.getElementById("login_border").classList.remove("width-greater");
+    $("login_border").removeClass("width-greater");
   }
 }
 
@@ -32,7 +67,9 @@ window.onload = function() {
 
 $(document).ready(function() {
   $('#usermenu-btn').click(function(e) {
-    $('#dropdown-menu').slideToggle();
+    e.stopPropagation();
+    $('#dropdown-menu').slideDown();
+    
   });
 
   $(document).click(function(e) {
@@ -43,15 +80,17 @@ $(document).ready(function() {
 });
 
 $(document).ready(function() {
-      //   $('#regForm').on('submit', function(event) {
-      //   event.preventDefault(); // Предотвращаем отправку формы по умолчанию
+  var currentPage = window.location.href;
+  if(currentPage == 'http://localhost/index.php?page=register') {
+    $('#regForm').on('submit', function(event) {
+         event.preventDefault(); // Предотвращаем отправку формы по умолчанию
 
-      //   if (validateForm()) {
-      //     // Если форма прошла все проверки, можно выполнить отправку формы
-      //     this.submit();
-      //   }
-      // });
-
+         if (validateForm()) {
+           // Если форма прошла все проверки, можно выполнить отправку формы
+           this.submit();
+         }
+      });
+  }
       $('#register_username_field, #register_email_field, #register_password_field, #register_password_accept').on('input', function () {
         $('#register_error').hide();
       });
@@ -183,3 +222,35 @@ $(document).ready(function() {
       }
       return isValid;
     }
+
+    function validateNames(fieldId) {
+      const fieldValue = $(fieldId).val();
+      let isValid = true;
+
+      if (fieldValue === ''){
+        isValid = true;
+      } else if (!/^([А-ЯЁ][а-яё]+)$/.test(fieldValue)) {
+        //$('#register_username_error').text('Это поле может содержать только кириллицу');
+        isValid = false;
+      } else {
+        //$('#register_username_error').text('');
+        // $('#register_username_error').hide();
+      }
+      return isValid;
+    }
+    function validateProfileEmail() {
+      const email = $('#email').val();
+      const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+      let isValid = true;
+
+      if (email === '') {
+        isValid = false;
+      } else if (!emailPattern.test(email)) {
+        isValid = false;
+      } else {
+        //$('#register_email_error').text('');
+        //$('#register_email_error').hide();
+      }
+      return isValid;
+    }
+
